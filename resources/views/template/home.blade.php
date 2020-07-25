@@ -116,7 +116,7 @@
           <div class="section-header">
             <h1>Blank Page</h1>
           </div>
-
+          @yield('content')
           <div class="section-body">
           </div>
         </section>
