@@ -68,7 +68,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tags = Tags::findorfail($id);
+        return view('admin.tag.edit', compact('tags'));
     }
 
     /**
@@ -80,7 +81,18 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|max:20|min:2'
+        ]);
+
+        $tag_data = [
+            'name' => $request->name,
+            'slug' => Str::slug($request->name)
+        ];
+
+        Tags::whereId($id)->update($tag_data);
+
+        return redirect()->route('tag.index')->with('success', 'Update Tag');
     }
 
     /**
