@@ -24,6 +24,7 @@
         <td>{{ $result + $post->firstitem() }}</td>
         <td>{{ $hasil->title }}</td>
         <td>{{ $hasil->category->name }}</td>
+        <td><img src="{{ asset($hasil->image) }}" class="img-fluid" style="width: 100px"></td>
         <form action="{{ route('post.destroy', $hasil->id )}}" method="POST">
           @csrf
           @method('delete')

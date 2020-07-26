@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Posts;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -38,7 +39,26 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'category_id' => 'required',
+            'content' => 'required',
+            'image' => 'required'
+        ]);
+
+        $image = $request->image;
+        $new_image = time().$image->getClientOriginalName();
+
+        $post = Posts::create([
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'content' => $request->content,
+            'image' => 'public/uploads/posts/'.$new_image,
+            'slug' => Str::slug($request->title)
+        ]);
+
+        $image->move('public/uploads/posts/', $new_image);
+        return redirect()->back()->with('success', 'Save Post');
     }
 
     /**
