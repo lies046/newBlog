@@ -7,7 +7,7 @@
   {{ Session('success')}}
 </div>
 @endif
-  <a href="{{ route('category.create')}}" class="btn btn-info btn-sm">Add Post</a>
+  <a href="{{ route('post.create')}}" class="btn btn-info btn-sm">Add Post</a>
   <br><br>
   <table class="table table-striped table-hover table-sm table-bordered">
     <thead>
