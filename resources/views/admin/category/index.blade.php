@@ -1,7 +1,7 @@
 @extends('template.home')
 @section('sub-title', 'Category')
 @section('content')
-  <a href="" class="btn btn-info btn-sm">Add Category</a>
+  <a href="{{ route('category.create')}}" class="btn btn-info btn-sm">Add Category</a>
   <br><br>
   <table class="table table-striped table-hover table-sm table-bordered">
     <thead>
