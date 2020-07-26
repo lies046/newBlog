@@ -1,7 +1,8 @@
 @extends('template.home')
+@section('sub-title', 'Category')
 @section('content')
-<h1>Category</h1>
-
+  <a href="" class="btn btn-info btn-sm">Add Category</a>
+  <br><br>
   <table class="table table-striped table-hover table-sm table-bordered">
     <thead>
       <tr>
