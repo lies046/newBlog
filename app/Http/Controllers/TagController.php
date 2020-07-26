@@ -38,7 +38,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:20|min:3'
+            'name' => 'required|max:20|min:2'
         ]);
 
         Tags::create([
@@ -103,6 +103,9 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tags = Tags::findorfail($id);
+        $tags->delete();
+
+        return redirect()->back()->with('success', 'Delete Tag');
     }
 }
