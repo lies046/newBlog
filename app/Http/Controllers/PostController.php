@@ -99,7 +99,39 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'category_id' => 'required',
+            'content' => 'required',
+        ]);
+        
+        $post = Posts::findorfail($id);
+
+        if($request->has('image')){
+            $image = $request->image;
+            $new_image = time().$image->getClientOriginalName();
+            $image->move('public/uploads/posts/', $new_image);
+
+            $post_data = [
+                'title' => $request->title,
+                'category_id' => $request->category_id,
+                'content' => $request->content,
+                'image' => 'public/uploads/posts/'.$new_image,
+                'slug' => Str::slug($request->title)
+            ];
+        }else{
+            $post_data = [
+                'title' => $request->title,
+                'category_id' => $request->category_id,
+                'content' => $request->content,
+                'slug' => Str::slug($request->title)
+            ];
+        }
+
+        $post->tags()->sync($request->tags);
+        $post->update($post_data);
+
+        return redirect()->back()->with('success', 'Save Post');
     }
 
     /**

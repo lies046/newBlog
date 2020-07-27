@@ -16,8 +16,9 @@
 </div>
 @endif
 
-<form action="{{ route('post.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('post.update', $post->id )}}" method="POST" enctype="multipart/form-data">
 @csrf
+@method('PATCH')
 <div class="form-group">
   <label>Title</label>
   <input type="text" class="form-control" name="title" value="{{ $post->title }}">
@@ -27,7 +28,11 @@
   <select class="form-control" name="category_id">
     <option value="" holder>Select Category</option>  
     @foreach($category as $result)
-    <option value="{{ $result->id }}">{{ $result->name }}</option>
+    <option value="{{ $result->id }}"
+      @if($result->id == $post->category_id)
+        selected
+      @endif  
+    >{{ $result->name }}</option>
     @endforeach
   </select>
 </div>
@@ -35,7 +40,13 @@
   <label>Select Tags</label>
   <select class="form-control select2" multiple="" name="tags[]">
   @foreach($tags as $tag)  
-  <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+  <option value="{{ $tag->id }}"
+    @foreach($post->tags as $value)
+      @if($tag->id == $value->id)
+        selected
+      @endif
+    @endforeach
+    >{{ $tag->name }}</option>
   @endforeach  
 </select>
 </div>
@@ -49,7 +60,7 @@
 </div>
 
 <div class="form-group">
-  <button class="btn btn-primary btn-block">save category</button>
+  <button class="btn btn-primary btn-block">update post</button>
 </div>
 </form>
 @endsection
