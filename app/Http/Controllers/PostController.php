@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Posts;
 use App\Category;
 use App\Tags;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -56,7 +57,8 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'content' => $request->content,
             'image' => 'public/uploads/posts/'.$new_image,
-            'slug' => Str::slug($request->title)
+            'slug' => Str::slug($request->title),
+            'user_id' => Auth::id()
         ]);
 
         $post->tags()->attach($request->tags);

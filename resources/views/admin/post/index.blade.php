@@ -16,6 +16,7 @@
         <th>Post</th>
         <th>Category</th>
         <th>Tags</th>
+        <th>Creator</th>
         <th>Image</th>
         <th>Action</th>
       </tr>
@@ -28,10 +29,11 @@
         <td>{{ $hasil->category->name }}</td>
         <td>@foreach($hasil->tags as $tag)
           <ul>
-            <li>{{ $tag->name }}</li>
+          <h6><span class="badge badge-info">{{ $tag->name }}</span></h6>
           </ul>
         @endforeach
         </td>
+        <td>{{ $hasil->users->name }}</td>
         <td><img src="{{ asset($hasil->image) }}" class="img-fluid" style="width: 100px"></td>
         <form action="{{ route('post.destroy', $hasil->id )}}" method="POST">
           @csrf
