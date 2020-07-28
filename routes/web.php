@@ -27,4 +27,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/post/restore/{id}', 'PostController@restore')->name('post.restore');
     Route::delete('/post/kill/{id}', 'PostController@kill')->name('post.kill');
     Route::resource('/post', 'PostController');
+    Route::resource('/user', 'UserController');
 });
