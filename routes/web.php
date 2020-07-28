@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('blog', function () {
+    return view('blog');
 });
 
 Route::group(['middleware' => 'auth'], function(){
