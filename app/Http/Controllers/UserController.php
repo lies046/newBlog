@@ -42,12 +42,22 @@ class UserController extends Controller
             'type' => 'required'
         ]);
 
+        if($request->input('password')){
+            $password = bcrypt($request->password);
+        }
+        else
+        {
+            $password = bcrypt('1234');
+        }
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'type' => $request->type,
-            'password' => bcrypt($request->password)
+            'password' => $password
         ]);
+
+
 
         return redirect()->back()->with('success', 'Add User');
     }
@@ -71,7 +81,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -83,7 +94,29 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:3|max:100',
+            'type' => 'required'
+        ]);
+
+        if($request->input('password')){
+            $user_data = [
+            'name' => $request->name,
+            'type' => $request->type,
+            'password' => bcrypt($request->password)
+            ];
+        }
+        else{
+            $user_data = [
+            'name' => $request->name,
+            'type' => $request->type,
+            ];
+        }
+
+        $user = User::find($id);
+        $user->update($user_data);
+
+        return redirect()->route('user.index')->with('success', 'Edit User');
     }
 
     /**
@@ -94,6 +127,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->back()->with('success', 'Delete User');
     }
 }

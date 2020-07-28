@@ -32,10 +32,10 @@
             <span class="badge badge-warning">Author</span>
           @endif
         </td>
-        <form action="{{ route('category.destroy', $hasil->id )}}" method="POST">
+        <form action="{{ route('user.destroy', $hasil->id )}}" method="POST">
           @csrf
           @method('delete')
-          <td><a href="{{ route('category.edit', $hasil->id )}}" class="btn btn-primary btn-sm">Edit</a>
+          <td><a href="{{ route('user.edit', $hasil->id )}}" class="btn btn-primary btn-sm">Edit</a>
           <button type="submit" class="btn btn-danger btn-sm">Delete</button>
         </form>
       </td>
