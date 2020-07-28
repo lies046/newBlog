@@ -148,5 +148,23 @@ class PostController extends Controller
         return redirect()->back()->with('success','Delete Post');
     }
 
-    
+    public function show_delete(){
+        $post = Posts::onlyTrashed()->paginate(10);
+        return view('admin.post.delete', compact('post'));
+    }
+
+    public function restore($id){
+        $post = Posts::withTrashed()->where('id', $id)->first();
+        $post->restore();
+
+        return redirect()->back()->with('success','Restore Post');
+    }
+
+    public function kill($id){
+        $post = Posts::withTrashed()->where('id', $id)->first();
+        $post->forceDelete();
+
+        return redirect()->back()->with('success','permanently deleted');
+
+    }
 }
