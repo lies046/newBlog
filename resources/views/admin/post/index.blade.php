@@ -15,6 +15,8 @@
         <th>No</th>
         <th>Post</th>
         <th>Category</th>
+        <th>Tags</th>
+        <th>Image</th>
         <th>Action</th>
       </tr>
     </thead>

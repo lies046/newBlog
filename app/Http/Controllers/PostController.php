@@ -131,7 +131,7 @@ class PostController extends Controller
         $post->tags()->sync($request->tags);
         $post->update($post_data);
 
-        return redirect()->back()->with('success', 'Save Post');
+        return redirect()->route('post.index')->with('success', 'Save Post');
     }
 
     /**
