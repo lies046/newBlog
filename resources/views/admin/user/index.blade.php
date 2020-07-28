@@ -7,7 +7,7 @@
   {{ Session('success')}}
 </div>
 @endif
-  <a href="{{ route('category.create')}}" class="btn btn-info btn-sm">Add User</a>
+  <a href="{{ route('user.create')}}" class="btn btn-info btn-sm">Add User</a>
   <br><br>
   <table class="table table-striped table-hover table-sm table-bordered">
     <thead>
@@ -29,7 +29,7 @@
           @if($hasil->type)
             <span class="badge badge-info">Administrator</span>
             @else
-            <span class="badge badge-warnig">Author</span>
+            <span class="badge badge-warning">Author</span>
           @endif
         </td>
         <form action="{{ route('category.destroy', $hasil->id )}}" method="POST">
