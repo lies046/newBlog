@@ -4,7 +4,7 @@
     <!-- container -->
     <div class="container">
       @yield('isi')
+      @include('template_blog.widget')
     </div>
   </div>
-  @include('template_blog.widget')
   @include('template_blog.footer')
