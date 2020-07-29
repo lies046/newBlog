@@ -1,10 +1,8 @@
 @extends('template_blog.content')
 
-@section('isi')
+@section('content')
 
-			<!-- row -->
-			<div id="hot-post" class="row hot-post">
-				<div class="col-md-8 hot-post-left">
+
 					<!-- post -->
 					<div class="post post-thumb">
 						<a class="post-img" href="blog-post.html"><img src="../frontend/img/hot-post-1.jpg" alt=""></a>
@@ -55,9 +53,6 @@
 					</div>
 					<!-- /post -->
 				</div>
-			</div>
-			<!-- /row -->
-		</div>
 		<!-- /container -->
 	</div>
 	<!-- /SECTION -->
