@@ -75,7 +75,7 @@
             @foreach($data as $post_latest)
 						<div class="col-md-6">
 							<div class="post">
-								<a class="post-img" href="#"><img src="{{ $post_latest->image }}" alt="" ></a>
+								<a class="post-img" href="{{ route('blog_content', $post_latest->slug)}}"><img src="{{ $post_latest->image }}" alt="" ></a>
 								<div class="post-body">
 									<div class="post-category">
 										<a href="#">{{ $post_latest->category->name }}</a>
