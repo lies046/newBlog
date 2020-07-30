@@ -19,7 +19,7 @@ Route::get('blog', 'BlogController@index');
 // Route::get('/content_post', function(){
 //     return view('blog.content_post');
 // });
-Route::get('/{slug}', 'BlogController@content_blog')->name('blog.content');
+Route::get('/content_post/{slug}', 'BlogController@content_blog')->name('blog.content');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', 'HomeController@index')->name('home');
