@@ -20,9 +20,11 @@
 				</div>
 			</div>
     </div>
+    <div class="col-md-8 hot-post-left">
     <br>
   <div class="section-row">
     {{ $content_post->content }}
   </div> 
   @endforeach
+</div>
 @endsection

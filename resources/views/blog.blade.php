@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<div class="col-md-8 hot-post-left">
 					<!-- post -->
 					<div class="post post-thumb">
 						<a class="post-img" href="blog-post.html"><img src="../frontend/img/hot-post-1.jpg" alt=""></a>
@@ -92,6 +92,7 @@
 					</div>
 					<!-- /row -->
 				</div>
+</div>
   @endsection
 
 	
