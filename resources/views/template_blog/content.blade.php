@@ -5,10 +5,9 @@
     <div class="container">
       			<!-- row -->
 			<div id="hot-post" class="row hot-post">
-				
-      @yield('content')
-      @include('template_blog.widget')
-</div>
+        @yield('content')
+        @include('template_blog.widget')
+      </div>
     </div>
   </div>
-  @include('template_blog.footer')
+@include('template_blog.footer')
